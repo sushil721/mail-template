@@ -1,0 +1,478 @@
+{
+	"type": "View",
+	"title": null,
+	"domainObjectName": "LiabilityInfo",
+	"name": "bill",
+	"children": [
+		{
+			"type": "ViewRow",
+			"properties": {
+				"xs": 12,
+				"md": 12,
+				"lg": 12
+			},
+			"children": [
+				{
+					"type": "ViewCol",
+					"properties": {
+						"xs": 12,
+						"md": 12,
+						"lg": 12
+					},
+					"children": [
+						{
+							"type": "Form",
+							"title": "Form 1",
+							"properties": {
+								"xs": 12,
+								"md": 12,
+								"lg": 12
+							},
+							"componentId": "Form_4",
+							"children": [
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": null,
+									"componentId": "Container_8",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [
+												{
+													"type": "Image",
+													"altText": null,
+													"text": "{Biller.logo}",
+													"properties": {
+														"xs": 2,
+														"md": 2,
+														"lg": 2
+													},
+													"componentId": "Image_7",
+													"src": "{Biller.logo}"
+												}
+											],
+											"componentId": "ContainerRow_6"
+										}
+									]
+								},
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": null,
+									"componentId": "Container_9",
+									"cssClasses": "amountDueContainer",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [
+												{
+													"type": "Currency",
+													"label": "Amount Due",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.AmountDueHL",
+													"length": 12,
+													"scale": 2,
+													"disabled": false,
+													"readonly": false,
+													"required": true,
+													"binding": "LiabilityInfo.AmountDue"
+												},
+												{
+													"type": "Date",
+													"label": "on %s or",
+													"properties": {
+														"xs": 6,
+														"md": 6,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.DueDateHL",
+													"disabled": false,
+													"readonly": false,
+													"required": true,
+													"format": "SHORT_FORMAT",
+													"parentTrigger": "",
+													"binding": "LiabilityInfo.DueDate"
+												},
+												{
+													"type": "Date",
+													"label": "Payment scheduled for",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.DueDateHL2",
+													"disabled": false,
+													"readonly": false,
+													"required": true,
+													"format": "SHORT_FORMAT",
+													"binding": "LiabilityInfo.DueDate"
+												}
+											],
+											"componentId": "ContainerRow_10"
+										}
+									]
+								},
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": "Account Summary",
+									"componentId": "Container_11",
+									"cssClasses": "summaryContainer",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [
+												{
+													"type": "TextInput",
+													"label": "Account Number",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.AccountNumber",
+													"minLength": 0,
+													"maxLength": 32,
+													"disabled": false,
+													"required": true,
+													"readonly": false,
+													"binding": "LiabilityInfo.AccountNumber"
+												},
+												{
+													"type": "Date",
+													"label": "Statement Date",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.EffectiveDate",
+													"disabled": false,
+													"readonly": false,
+													"required": true,
+													"format": "SHORT_FORMAT",
+													"binding": "LiabilityInfo.EffectiveDate"
+												},
+												{
+													"type": "TextInput",
+													"label": "Customer Name",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.LastName",
+													"minLength": 0,
+													"maxLength": 64,
+													"disabled": false,
+													"required": false,
+													"readonly": false,
+													"binding": "LiabilityInfo.LastName"
+												},
+												{
+													"type": "TextInput",
+													"label": "Customer Name",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.FirstName",
+													"minLength": 0,
+													"maxLength": 64,
+													"disabled": false,
+													"required": false,
+													"readonly": false,
+													"binding": "LiabilityInfo.FirstName"
+												},
+												{
+													"type": "Currency",
+													"label": "Previous Bill Amount",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.LastBillAmount",
+													"length": 12,
+													"scale": 2,
+													"disabled": false,
+													"readonly": false,
+													"required": false,
+													"binding": "LiabilityInfo.LastBillAmount"
+												},
+												{
+													"type": "Currency",
+													"label": "Payments",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.LastPaymentAmount",
+													"length": 12,
+													"scale": 2,
+													"disabled": false,
+													"readonly": false,
+													"required": false,
+													"binding": "LiabilityInfo.LastPaymentAmount"
+												},
+												{
+													"type": "Currency",
+													"label": "Amount Due",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.AmountDue",
+													"length": 12,
+													"scale": 2,
+													"disabled": false,
+													"readonly": false,
+													"required": true,
+													"binding": "LiabilityInfo.AmountDue"
+												},
+												{
+													"type": "Date",
+													"label": "Due Date",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.DueDate",
+													"disabled": false,
+													"readonly": false,
+													"required": true,
+													"format": "SHORT_FORMAT",
+													"binding": "LiabilityInfo.DueDate"
+												},
+												{
+													"type": "TextInput",
+													"label": "Address",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 12
+													},
+													"componentId": "LiabilityInfo.AddressLine1",
+													"minLength": 0,
+													"maxLength": 128,
+													"disabled": false,
+													"required": false,
+													"readonly": false,
+													"binding": "LiabilityInfo.AddressLine1"
+												}
+											],
+											"componentId": "ContainerRow_12"
+										}
+									]
+								},
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": "Payment Options",
+									"componentId": "Container_13",
+									"cssClasses": "optionsContainer",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [
+												{
+													"type": "PlainText",
+													"messageKey": "Pay online:",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 4
+													},
+													"componentId": "Plain Text_16"
+												},
+												{
+													"type": "HtmlLink",
+													"properties": {
+														"xs": 4,
+														"md": 4,
+														"lg": 8
+													},
+													"componentId": "Html Link_17",
+													"target": "_self",
+													"url": "https://dev.paymentus.io/rotp/abc"
+												},
+												{
+													"type": "PlainText",
+													"messageKey": "Pay by Phone:",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 4
+													},
+													"componentId": "Plain Text_18"
+												},
+												{
+													"type": "PlainText",
+													"messageKey": "phone number here",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 8
+													},
+													"componentId": "Plain Text_19"
+												},
+												{
+													"type": "PlainText",
+													"messageKey": "Mail",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 4
+													},
+													"componentId": "Plain Text_20"
+												}
+											],
+											"componentId": "ContainerRow_14"
+										}
+									]
+								},
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": "Important Messages",
+									"componentId": "Container_21",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [
+												{
+													"type": "PlainText",
+													"messageKey": "messages here",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 4
+													},
+													"componentId": "Plain Text_27"
+												}
+											],
+											"componentId": "ContainerRow_22"
+										}
+									]
+								},
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": null,
+									"componentId": "Container_23",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [],
+											"componentId": "ContainerRow_24"
+										}
+									]
+								},
+								{
+									"type": "Container",
+									"properties": {
+										"xs": 12,
+										"md": 12,
+										"lg": 6
+									},
+									"title": "Customer Service",
+									"componentId": "Container_25",
+									"children": [
+										{
+											"type": "ContainerRow",
+											"properties": {
+												"xs": 12,
+												"md": 12,
+												"lg": 12
+											},
+											"children": [
+												{
+													"type": "PlainText",
+													"messageKey": "For emergencies and reporting outages: [phone number here]",
+													"properties": {
+														"xs": 12,
+														"md": 12,
+														"lg": 4
+													},
+													"componentId": "Plain Text_28"
+												}
+											],
+											"componentId": "ContainerRow_26"
+										}
+									]
+								}
+							]
+						}
+					],
+					"componentId": "ViewCol_3"
+				}
+			],
+			"componentId": "ViewRow_2"
+		}
+	],
+	"componentId": "View_1"
+}
