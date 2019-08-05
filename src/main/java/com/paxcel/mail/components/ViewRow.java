@@ -12,11 +12,12 @@ import org.springframework.stereotype.Component;
 import com.paxcel.mail.common.ChildChecker;
 import com.paxcel.mail.components.interfc.ComponentInterface;
 import com.paxcel.mail.model.DomainModel;
+import com.paxcel.mail.service.NewHtmlGeneratorService;
 
-@Component("ViewCol")
-public class ViewCol implements ComponentInterface {
+@Component("ViewRow")
+public class ViewRow  implements ComponentInterface {
 	
-	private static Logger log = LoggerFactory.getLogger(ViewCol.class);
+private static Logger log = LoggerFactory.getLogger(ViewRow.class);
 	
 	@Autowired
 	private ChildChecker childChecker;
@@ -24,11 +25,13 @@ public class ViewCol implements ComponentInterface {
 	@Autowired
 	private ApplicationContext context;
 
+	/*
+	 * @Autowired private ComponentInterface compInterface;
+	 */
 	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
-
-		log.info("in ViewCol for creating a table");
-		  writer.append("<tr class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
+		log.info("in ViewRow for creating a table");
+		writer.append("<table class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
 		
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
 			
@@ -36,14 +39,12 @@ public class ViewCol implements ComponentInterface {
 				
 			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
 			   component.getGeneratedView(writer,dm);
-			   System.out.println("IN View Col ");
+			   
 			}//for loop
 			
 		}//if child checker
 			
-		writer.append("</div>\r\n" );
-			
+		writer.append("</table>\r\n" );
 		return writer;
 	}
-
 }

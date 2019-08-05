@@ -13,10 +13,10 @@ import com.paxcel.mail.common.ChildChecker;
 import com.paxcel.mail.components.interfc.ComponentInterface;
 import com.paxcel.mail.model.DomainModel;
 
-@Component("ViewCol")
-public class ViewCol implements ComponentInterface {
+@Component("HtmlLink")
+public class HtmlLink  implements ComponentInterface{
 	
-	private static Logger log = LoggerFactory.getLogger(ViewCol.class);
+	private static Logger log = LoggerFactory.getLogger(HtmlLink.class);
 	
 	@Autowired
 	private ChildChecker childChecker;
@@ -24,26 +24,27 @@ public class ViewCol implements ComponentInterface {
 	@Autowired
 	private ApplicationContext context;
 
-	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
-		log.info("in ViewCol for creating a table");
-		  writer.append("<tr class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
+		log.info("in HtmlLink for creating a table");
+		  writer.append("<div class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
 		
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
 			
-			for(DomainModel dm:domainModel.getChildren()) {
-				
-			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
-			   component.getGeneratedView(writer,dm);
-			   System.out.println("IN View Col ");
-			}//for loop
-			
+			/*
+			 * for(DomainModel dm:domainModel.getChildren()) {
+			 * 
+			 * ComponentInterface component = (ComponentInterface)
+			 * context.getBean(dm.getType()); component.getGeneratedView(writer,dm);
+			 * System.out.println("IN Container Row "); }//for loop
+			 */
 		}//if child checker
 			
 		writer.append("</div>\r\n" );
 			
 		return writer;
 	}
+
+
 
 }

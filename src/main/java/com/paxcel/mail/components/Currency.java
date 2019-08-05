@@ -13,10 +13,10 @@ import com.paxcel.mail.common.ChildChecker;
 import com.paxcel.mail.components.interfc.ComponentInterface;
 import com.paxcel.mail.model.DomainModel;
 
-@Component("ViewCol")
-public class ViewCol implements ComponentInterface {
+@Component("Currency")
+public class Currency  implements ComponentInterface{
 	
-	private static Logger log = LoggerFactory.getLogger(ViewCol.class);
+	private static Logger log = LoggerFactory.getLogger(Currency.class);
 	
 	@Autowired
 	private ChildChecker childChecker;
@@ -24,26 +24,16 @@ public class ViewCol implements ComponentInterface {
 	@Autowired
 	private ApplicationContext context;
 
-	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
-		log.info("in ViewCol for creating a table");
-		  writer.append("<tr class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
-		
-		 if(childChecker.checkChild(domainModel.getChildren().size())) {
-			
-			for(DomainModel dm:domainModel.getChildren()) {
-				
-			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
-			   component.getGeneratedView(writer,dm);
-			   System.out.println("IN View Col ");
-			}//for loop
-			
-		}//if child checker
-			
+		log.info("in Currency for creating a table");
+	    writer.append("<div class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
+		  writer.append("<span style=\"display:inline\">"+domainModel.getLabel()+" : "+domainModel.getBinding()+"</span>");
 		writer.append("</div>\r\n" );
 			
 		return writer;
 	}
+
+
 
 }

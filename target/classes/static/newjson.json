@@ -58,7 +58,7 @@
 														"lg": 2
 													},
 													"componentId": "Image_7",
-													"src": "{Biller.logo}"
+													"src": "https://s3.amazonaws.com/paymentus-logos-dev/PAYMENTUS-DEV/N503/logo/logo.jpeg?timestamp=1560114033212"
 												}
 											],
 											"componentId": "ContainerRow_6"

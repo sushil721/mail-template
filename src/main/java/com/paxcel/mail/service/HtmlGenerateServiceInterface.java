@@ -3,12 +3,14 @@ package com.paxcel.mail.service;
 import java.io.IOException;
 import java.io.Writer;
 
-import com.paxcel.mail.model.ModelMain;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+
+import com.paxcel.mail.model.DomainModel;
 
 public interface HtmlGenerateServiceInterface {
 
 	//Writer createHtmlTags(ModelMain modelMain);
 
-	Writer createHtmlTags(Writer writer, ModelMain modelMain)  throws IOException,ClassNotFoundException, InstantiationException, IllegalAccessException;
+	Writer createHtmlTags(Writer writer, DomainModel domainModel)  throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchBeanDefinitionException;
 
 }

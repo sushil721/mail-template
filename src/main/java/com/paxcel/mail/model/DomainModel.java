@@ -18,7 +18,14 @@ public class DomainModel {
 	
 	private String type;
 	private String title;
-	private Map<String,Integer> md = new HashMap<>();
+	private String domainObjectName;
+	private String name;
+	private String componentId;
+	private String cssClasses;
+	
+	
+	
+	private Map<String,Integer> properties = new HashMap<>();
 	
 	private String altText; 
 	private String text;
@@ -30,6 +37,17 @@ public class DomainModel {
 	private Boolean readonly=false;
 	private String label;//"  : "Account Number",
 	private String messageKey;//": "Copyright (c) Paymentus Co. 2019",
+	private String length;
+	private String scale;
+	@JsonSerialize(include = JsonSerialize.Inclusion.NON_DEFAULT)
+	private Boolean disabled=false;
+	@JsonSerialize(include = JsonSerialize.Inclusion.NON_DEFAULT)
+	private Boolean required=true;
+	private String format;//": "SHORT_FORMAT",
+	private String parentTrigger;//": "",
+	private String minLength;//": 0,
+	private String maxLength;//": 32,
+	
 	
 	@JsonSerialize(include=JsonSerialize.Inclusion.NON_EMPTY)
 	private List<DomainModel> children = new ArrayList<>();
@@ -50,12 +68,14 @@ public class DomainModel {
 		this.title = title;
 	}
 
-	public Map<String, Integer> getMd() {
-		return md;
+	
+	
+	public Map<String, Integer> getProperties() {
+		return properties;
 	}
 
-	public void setMd(Map<String, Integer> md) {
-		this.md = md;
+	public void setProperties(Map<String, Integer> properties) {
+		this.properties = properties;
 	}
 
 	public String getAltText() {
@@ -128,6 +148,102 @@ public class DomainModel {
 
 	public void setChildren(List<DomainModel> children) {
 		this.children = children;
+	}
+
+	public String getDomainObjectName() {
+		return domainObjectName;
+	}
+
+	public void setDomainObjectName(String domainObjectName) {
+		this.domainObjectName = domainObjectName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getComponentId() {
+		return componentId;
+	}
+
+	public void setComponentId(String componentId) {
+		this.componentId = componentId;
+	}
+
+	public String getCssClasses() {
+		return cssClasses;
+	}
+
+	public void setCssClasses(String cssClasses) {
+		this.cssClasses = cssClasses;
+	}
+
+	public String getLength() {
+		return length;
+	}
+
+	public void setLength(String length) {
+		this.length = length;
+	}
+
+	public String getScale() {
+		return scale;
+	}
+
+	public void setScale(String scale) {
+		this.scale = scale;
+	}
+
+	public Boolean getDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(Boolean disabled) {
+		this.disabled = disabled;
+	}
+
+	public Boolean getRequired() {
+		return required;
+	}
+
+	public void setRequired(Boolean required) {
+		this.required = required;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
+	public String getParentTrigger() {
+		return parentTrigger;
+	}
+
+	public void setParentTrigger(String parentTrigger) {
+		this.parentTrigger = parentTrigger;
+	}
+
+	public String getMinLength() {
+		return minLength;
+	}
+
+	public void setMinLength(String minLength) {
+		this.minLength = minLength;
+	}
+
+	public String getMaxLength() {
+		return maxLength;
+	}
+
+	public void setMaxLength(String maxLength) {
+		this.maxLength = maxLength;
 	}
 
 	

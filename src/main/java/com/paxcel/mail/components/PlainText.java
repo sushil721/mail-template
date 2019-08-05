@@ -1,8 +1,33 @@
 package com.paxcel.mail.components;
 
+import java.io.Writer;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class PlainText {
+import com.paxcel.mail.common.ChildChecker;
+import com.paxcel.mail.components.interfc.ComponentInterface;
+import com.paxcel.mail.model.DomainModel;
 
+@Component("PlainText")
+public class PlainText  implements ComponentInterface{
+	
+	@Autowired
+	private ChildChecker childChecker;
+	
+	@SuppressWarnings("unused")
+	public Writer getGeneratedView(Writer writer, DomainModel domainModelNew) {
+
+		//String str = "<div class=\"md-"+domainModelNew.getMd().get("md")+"\">\r\n";
+		
+		 // if(childChecker.checkChild(domainModelNew.getChildren().size())) {
+			  
+			//  for(DomainModel dm:domainModelNew.getChildren()) {
+				//str.concat("Sushil Kumar Singh");  
+				System.out.println("In Container");
+			 // }
+		    // }
+		 //  str.concat("</div>\r\n");
+		return writer;
+	}
 }

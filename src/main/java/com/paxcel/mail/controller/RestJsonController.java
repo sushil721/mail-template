@@ -10,23 +10,20 @@ import javax.mail.MessagingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailSendException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paxcel.mail.dto.MailResponceDTO;
+import com.paxcel.mail.model.DomainModel;
 import com.paxcel.mail.model.Mail;
-import com.paxcel.mail.model.ModelMain;
 import com.paxcel.mail.service.EmailServiceHtmlGeneration;
 import com.paxcel.mail.service.HtmlGenerateServiceInterface;
 
@@ -47,11 +44,11 @@ public class RestJsonController {
       Map<String, String> messageMap = new HashMap<String, String>();
       Writer writer = new StringWriter();
 	   Resource resource = new ClassPathResource("/static/newjson.json");
-	   ModelMain modelMain = null;
+	  // ModelMain modelMain = null;
 		try {
 			
 			ObjectMapper mapper = new ObjectMapper();
-			modelMain = mapper.readValue(resource.getInputStream(), ModelMain.class);
+			DomainModel domainModel = mapper.readValue(resource.getInputStream(), DomainModel.class);
 			//htmlGenerateServiceInterface.createHtmlTags(writer,modelMain).toString();
 
 			Mail mail = new Mail();
@@ -62,28 +59,29 @@ public class RestJsonController {
 			mail.setSubject("Ebill generated from ebill renderer.");
 				try {
 					
-					emailServiceHtmlGeneration.sendGeneratedMail(mail, htmlGenerateServiceInterface.createHtmlTags(writer,modelMain).toString());
+					emailServiceHtmlGeneration.sendGeneratedMail(mail, htmlGenerateServiceInterface.createHtmlTags(writer,domainModel).toString());
 					
 				} catch (MailSendException e) {
 					log.error(e.getMessage());
 					messageMap.put("Message", e.getMessage());
 					return new MailResponceDTO(messageMap, HttpStatus.INTERNAL_SERVER_ERROR , "May be internate connection not available");
-				
 				} catch (MessagingException e) {
 					log.error(e.getMessage());
 					messageMap.put("Message", e.getMessage());
 					return new MailResponceDTO(messageMap, HttpStatus.BAD_GATEWAY , null);
+				}catch (NoSuchBeanDefinitionException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage() +" ");
+					return new MailResponceDTO(messageMap, HttpStatus.NOT_FOUND , " , please provide a required/valid 'type' ");
 				} catch (ClassNotFoundException e) {
 					log.error(e.getMessage());
 					messageMap.put("Message", e.getMessage() +" type not accepted");
 					return new MailResponceDTO(messageMap, HttpStatus.NOT_ACCEPTABLE , "Type Not Accept");
 				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
 					log.error(e.getMessage());
 					messageMap.put("Message", e.getMessage() +" type not accepted");
 					return new MailResponceDTO(messageMap, HttpStatus.NOT_FOUND, " class not instantiate");
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					log.error(e.getMessage());
 					messageMap.put("Message", e.getMessage() +" type not accepted");
 					return new MailResponceDTO(messageMap, HttpStatus.BAD_REQUEST , " Illegal Request");
