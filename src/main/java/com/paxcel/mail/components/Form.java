@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.paxcel.mail.common.ChildChecker;
+import com.paxcel.mail.common.TableCounterChecker;
 import com.paxcel.mail.components.interfc.ComponentInterface;
 import com.paxcel.mail.model.DomainModel;
 
@@ -23,24 +24,28 @@ public class Form  implements ComponentInterface {
 	
 	@Autowired
 	private ApplicationContext context;
+	
+	 @Autowired 
+	 private TableCounterChecker counterChecker;
 
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
 		log.info("in Form for creating a table");
-		  writer.append("<td class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
+		  writer.append("<table class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
 		
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
 			
 			for(DomainModel dm:domainModel.getChildren()) {
 				
 			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
+				//ComponentInterface component = new Container();
 			   component.getGeneratedView(writer,dm);
-			   System.out.println("IN Form ");
+			  // System.out.println("IN Form ");
 			}//for loop
 			
 		}//if child checker
-			
-		writer.append("</td>\r\n" );
+		 counterChecker.reSet();
+		writer.append("</table>\r\n" );
 			
 		return writer;
 	}

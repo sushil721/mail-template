@@ -24,12 +24,15 @@ public class Image  implements ComponentInterface {
 	@Autowired
 	private ApplicationContext context;
 
+	//private static StringBuilder sb = new StringBuilder("");
+	
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
 		  log.info("in Container Row for creating a table");
-		  writer.append("<td>");
-		  writer.append("<img src=\""+domainModel.getSrc()+"\" alt=\""+domainModel.getAltText()+"\" width=\""+domainModel.getWidth()+"\" class=\"md-"+domainModel.getProperties().get("md")+"\" />\r\n" );
-		
+		  writer.append("<div class=\"lg-"+domainModel.getProperties().get("lg")+"\">");
+		 // sb.append(domainModel.getAltText()==null ? "" : domainModel.getAltText());
+		  writer.append("<img src=\""+domainModel.getSrc()+"\" alt=\""+domainModel.getAltText()+"\" width=\""+domainModel.getWidth()+"\" />\r\n" );
+		  
 		  if(childChecker.checkChild(domainModel.getChildren().size())) {
 			  for(DomainModel dm:domainModel.getChildren()) {
 			  ComponentInterface component = (ComponentInterface)
@@ -38,7 +41,7 @@ public class Image  implements ComponentInterface {
 			  System.out.println("IN Container Row "); }//for loop
 			 
 		}//if child checker
-		  writer.append("</td>");
+		  writer.append("</div>");
 		
 		return writer;
 	}

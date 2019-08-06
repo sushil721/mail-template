@@ -2,172 +2,52 @@
 <html>
 <head>
 <style type="text/css">
-body {
-	background-color: #f6f6f6;
-	margin: 0 !important;
-	padding: 0;
-}
-
-table {
-	border-spacing: 0px;
-	font-family: sans-serif;
-	color: #333333;
-	table-layout: fixed;
-}
-
-td {
-	font-family: sans-serif;
-	font-size: 14px;
-	vertical-align: middle;
-	padding-top: .8em;
-}
-
-img {
-	border: none;
-	-ms-interpolation-mode: bicubic
-}
-
-div[style*="margin: 16px 0"] {
-	margin: 0 !important;
-}
-
-.wrapper {
-	display: block;
-	margin: 0 auto !important;
-	max-width: 580px;
-	padding: 10px;
-	width: 580px;
-}
-
-.webkit {
-	box-sizing: border-box;
-	display: block;
-	margin: 0 auto;
-	max-width: 580px;
-	padding: 10px;
-}
-
-.outer {
-	background: #ffffff;
-	border-radius: 5px;
-	width: 600px;
-}
-
-.viewheader {
-	clear: both;
-	margin-top: 10px;
-	text-align: center;
-	width: 100%;
-}
-
-.content-block {
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.viewfooter {
-	clear: both;
-	margin-top: 10px;
-	text-align: center;
-	width: 100%;
-}
-
-.footer td, .footer p, .footer span, .footer a {
-	color: #999999;
-	font-size: 12px;
-	text-align: center;
-}
-
-.powered-by a {
-	text-decoration: none;
-}
-
-.twelve-column {
-	text-align: center;
-	font-size: 0;
-}
-
-.twelve-column .xs-1, .twelve-column .md-1, .twelve-column .lg-1 {
+.lg-1 {
 	width: 8.33%;
 }
 
-.twelve-column .xs-2, .twelve-column .md-2, .twelve-column .lg-2 {
+.lg-2 {
 	width: 16.66%;
 }
 
-.twelve-column .xs-3, .twelve-column .md-3, .twelve-column .lg-3 {
+.lg-3 {
 	width: 25%;
 }
 
-.twelve-column .xs-4, .twelve-column .md-5, .twelve-column .lg-6 {
+.lg-4 {
 	width: 33.33%;
 }
 
-.twelve-column .xs-5, .twelve-column .md-5, .twelve-column .lg-5 {
+.lg-5 {
 	width: 41.66%;
 }
 
-.twelve-column .xs-6, .twelve-column .md-6, .twelve-column .lg-6 {
+.lg-6 {
 	width: 50%;
 }
 
-.twelve-column .xs-7, .twelve-column .md-7, .twelve-column .lg-7 {
+.lg-7 {
 	width: 58.33%;
 }
 
-.twelve-column .xs-8, .twelve-column .md-8, .twelve-column .lg-8 {
+.lg-8 {
 	width: 25%;
 }
 
-.twelve-column .xs-9, .twelve-column .md-9, .twelve-column .lg-9 {
+.lg-9 {
 	width: 75%;
 }
 
-.twelve-column .xs-10, .twelve-column .md-10, .twelve-column .lg-10 {
+.lg-10 {
 	width: 83.33%;
 }
 
-.twelve-column .xs-11, .twelve-column .md-11, .twelve-column .lg-11 {
+.lg-11 {
 	width: 91.66%;
 }
 
-.twelve-column .xs-12, .twelve-column .md-12, .twelve-column .lg-12 {
+.lg-12 {
 	width: 100%;
-}
-
-.twelve-column .xs-6 .column, .twelve-column .md-6 .column  .twelve-column .lg-6 .column
-	{
-	width: 100%;
-	max-width: 300px;
-	display: inline-block;
-	vertical-align: top;
-}
-
-.inner {
-	font-size: 20px;
-}
-
-.twelve-column .contents {
-	font-size: 14px;
-	text-align: left;
-	width: 100%;
-	overflow: hidden;
-	overflow-wrap: break-word;
-}
-
-.twelve-column img {
-	width: 100%;
-	max-width: 80px;
-	height: auto;
-}
-
-.twelve-column .text {
-	padding-top: 10px;
-}
-
-.col-1 {
-	width: 8.33%;
-	max-width: 50px;
 }
 
 .summaryContainer {
@@ -187,7 +67,7 @@ div[style*="margin: 16px 0"] {
 	text-align: center;
 }
 
-caption {
+.caption {
 	text-align: left;
 	padding: 5px;
 }
@@ -195,85 +75,125 @@ caption {
 .underlined-caption caption {
 	border-bottom: 1px solid black;
 }
+
+.outer {
+	background: #ffffff;
+	border-radius: 5px;
+	width: 600px;
+}
+
+table {
+	border-spacing: 0px;
+	padding: 5px
+}
 </style>
 </head>
-<body>
-	<center class="wrapper">
-		<div class="webkit">
-			<!--[if (gte mso 9)|(IE)]>
-<table class="outer" align="center">
-<tr>
-<td>
-<![endif]-->
-			<table class="outer">
-				<tr>
-					<td class="twelve-column">
-						<table class="md-12">
-							<tr class="md-12">
-								<td class="md-12">
-									<table class="md-12 null">
-										<tr class="md-12">
-											<td><img src="{Biller.logo}" alt="null" width="null"
-												class="md-2" /></td>
-										</tr>
-										</tr>
-										<table class="md-12 amountDueContainer">
-											<tr class="md-12">
-												<div class="md-12">
-													<span style="display: inline">Amount Due :
-														LiabilityInfo.AmountDue</span>
-												</div>
-												<div class="md-6"></div>
-												<div class="md-12"></div>
-											</tr>
-											</tr>
-											<table class="md-12 summaryContainer">
-												<tr class="md-12">
-													<div class="md-12"></div>
-													<div class="md-12">
-														<span style="display: inline">Previous Bill Amount
-															: LiabilityInfo.LastBillAmount</span>
-													</div>
-													<div class="md-12">
-														<span style="display: inline">Payments :
-															LiabilityInfo.LastPaymentAmount</span>
-													</div>
-													<div class="md-12">
-														<span style="display: inline">Amount Due :
-															LiabilityInfo.AmountDue</span>
-													</div>
-													<div class="md-12"></div>
-												</tr>
-												</tr>
-												<table class="md-12 optionsContainer">
-													<tr class="md-12">
-														<div class="md-4"></div>
-													</tr>
-													</tr>
-													<table class="md-12 null">
-														<tr class="md-12">
-														</tr>
-														</tr>
-														<table class="md-12 null">
-															<tr class="md-12">
-															</tr>
-															</tr>
-															<table class="md-12 null">
-																<tr class="md-12">
-																</tr>
-																</tr>
-																</td>
-																</div>
-															</table>
-															</td>
-															</tr>
-														</table>
-														<!--[if (gte mso 9)|(IE)]>
-</td>
-</tr>
-</table>
-<![endif]-->
-														</div>
-														</center>
+<body style="background-color: #f6f6f6;">
+	<center>
+		<table width="600px" class="outer">
+			<tr class="lg-12">
+				<td class="lg-12">
+					<table class="lg-12">
+					  <tr>
+						<td class="lg-6 null">
+							<table width="100%">
+								<caption class="container-title"></caption>
+								<tr class="lg-12">
+									<td>
+										<div class="lg-2">
+											<img
+												src="https://s3.amazonaws.com/paymentus-logos-dev/PAYMENTUS-DEV/N503/logo/logo.jpeg?timestamp=1560114033212"
+												alt="null" width="48" />
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						</tr>
+						<tr>
+							<td class="lg-6 amountDueContainer">
+								<table width="100%">
+									<caption class="container-title">null</caption>
+									<tr class="lg-12">
+										<td>
+											<div class="lg-12">
+												<span style="display: inline">Amount Due :
+													LiabilityInfo.AmountDue</span>
+											</div>
+											<div class="lg-12"></div>
+											<div class="lg-12"></div>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td class="lg-6 summaryContainer">
+								<table width="100%">
+									<caption class="container-title">Account Summary</caption>
+									<tr class="lg-12">
+										<td>
+											<div class="lg-12"></div>
+											<div class="lg-12">
+												<span style="display: inline">Previous Bill Amount :
+													LiabilityInfo.LastBillAmount</span>
+											</div>
+											<div class="lg-12">
+												<span style="display: inline">Payments :
+													LiabilityInfo.LastPaymentAmount</span>
+											</div>
+											<div class="lg-12">
+												<span style="display: inline">Amount Due :
+													LiabilityInfo.AmountDue</span>
+											</div>
+											<div class="lg-12"></div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+						<td class="lg-6 optionsContainer">
+							<table width="100%">
+								<caption class="container-title">Payment Options</caption>
+								<tr class="lg-12">
+									<td>
+										<div class="lg-8"></div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						</tr>
+						<tr>
+							<td class="lg-6 null">
+								<table width="100%">
+									<caption class="container-title">Important Messages</caption>
+									<tr class="lg-12">
+										<td></td>
+									</tr>
+								</table>
+							</td>
+							<td class="lg-6 null">
+								<table width="100%">
+									<caption class="container-title"></caption>
+									<tr class="lg-12">
+										<td></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+						<td class="lg-6 null">
+							<table width="100%">
+								<caption class="container-title">Customer Service</caption>
+								<tr class="lg-12">
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</center>
 </body>
 </html>

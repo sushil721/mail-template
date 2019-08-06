@@ -27,20 +27,18 @@ public class ContainerRow  implements ComponentInterface{
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
 		log.info("in Container Row for creating a table");
-		  writer.append("<tr class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
-		
+		 writer.append("<tr class=\"lg-"+domainModel.getProperties().get("lg")+"\" >\r\n" );
+		 writer.append("<td>\r\n");
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
 			
 			
 			  for(DomainModel dm:domainModel.getChildren()) {
-			  
-			  ComponentInterface component = (ComponentInterface)
-			  context.getBean(dm.getType()); 
+			  ComponentInterface component = (ComponentInterface)context.getBean(dm.getType()); 
 			  component.getGeneratedView(writer,dm);
 			  System.out.println("IN Container Row "); }//for loop
 			 
 		}//if child checker
-			
+		writer.append("</td>\r\n");
 		writer.append("</tr>\r\n" );
 			
 		return writer;

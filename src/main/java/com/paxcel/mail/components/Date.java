@@ -27,17 +27,14 @@ public class Date  implements ComponentInterface{
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
 		log.info("in Date for creating a table");
-		  writer.append("<div class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
-		
-		 if(childChecker.checkChild(domainModel.getChildren().size())) {
-			
-			/*
-			 * for(DomainModel dm:domainModel.getChildren()) {
-			 * 
-			 * ComponentInterface component = (ComponentInterface)
-			 * context.getBean(dm.getType()); component.getGeneratedView(writer,dm);
-			 * System.out.println("IN Container Row "); }//for loop
-			 */
+		  writer.append("<div class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
+		  writer.append("<span style=\"display:inline\">"+domainModel.getLabel()+" : "+domainModel.getBinding()+"</span>");
+		  
+		  if(childChecker.checkChild(domainModel.getChildren().size())) {
+			for(DomainModel dm:domainModel.getChildren()) {
+			  ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
+			  component.getGeneratedView(writer,dm);
+			}//for loop
 		}//if child checker
 			
 		writer.append("</div>\r\n" );

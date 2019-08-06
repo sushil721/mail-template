@@ -37,7 +37,7 @@
 										"md": 12,
 										"lg": 6
 									},
-									"title": null,
+									"title": "",
 									"componentId": "Container_8",
 									"children": [
 										{
@@ -51,7 +51,8 @@
 												{
 													"type": "Image",
 													"altText": null,
-													"text": "{Biller.logo}",
+													"text": "Paymentus Logo",
+													"width": 48,
 													"properties": {
 														"xs": 2,
 														"md": 2,
@@ -98,14 +99,14 @@
 													"disabled": false,
 													"readonly": false,
 													"required": true,
-													"binding": "LiabilityInfo.AmountDue"
+													"binding": "$200"
 												},
 												{
 													"type": "Date",
 													"label": "on %s or",
 													"properties": {
-														"xs": 6,
-														"md": 6,
+														"xs": 12,
+														"md": 12,
 														"lg": 12
 													},
 													"componentId": "LiabilityInfo.DueDateHL",
@@ -114,7 +115,7 @@
 													"required": true,
 													"format": "SHORT_FORMAT",
 													"parentTrigger": "",
-													"binding": "LiabilityInfo.DueDate"
+													"binding": "15/08/2019"
 												},
 												{
 													"type": "Date",
@@ -129,7 +130,7 @@
 													"readonly": false,
 													"required": true,
 													"format": "SHORT_FORMAT",
-													"binding": "LiabilityInfo.DueDate"
+													"binding": "20/08/2019"
 												}
 											],
 											"componentId": "ContainerRow_10"
@@ -169,7 +170,7 @@
 													"disabled": false,
 													"required": true,
 													"readonly": false,
-													"binding": "LiabilityInfo.AccountNumber"
+													"binding": "9234567812345678"
 												},
 												{
 													"type": "Date",
@@ -184,7 +185,7 @@
 													"readonly": false,
 													"required": true,
 													"format": "SHORT_FORMAT",
-													"binding": "LiabilityInfo.EffectiveDate"
+													"binding": "15/08/2019"
 												},
 												{
 													"type": "TextInput",
@@ -200,23 +201,7 @@
 													"disabled": false,
 													"required": false,
 													"readonly": false,
-													"binding": "LiabilityInfo.LastName"
-												},
-												{
-													"type": "TextInput",
-													"label": "Customer Name",
-													"properties": {
-														"xs": 12,
-														"md": 12,
-														"lg": 12
-													},
-													"componentId": "LiabilityInfo.FirstName",
-													"minLength": 0,
-													"maxLength": 64,
-													"disabled": false,
-													"required": false,
-													"readonly": false,
-													"binding": "LiabilityInfo.FirstName"
+													"binding": "Sushil Kumar Singh"
 												},
 												{
 													"type": "Currency",
@@ -232,7 +217,7 @@
 													"disabled": false,
 													"readonly": false,
 													"required": false,
-													"binding": "LiabilityInfo.LastBillAmount"
+													"binding": "$2200"
 												},
 												{
 													"type": "Currency",
@@ -248,7 +233,7 @@
 													"disabled": false,
 													"readonly": false,
 													"required": false,
-													"binding": "LiabilityInfo.LastPaymentAmount"
+													"binding": "$2500"
 												},
 												{
 													"type": "Currency",
@@ -264,7 +249,7 @@
 													"disabled": false,
 													"readonly": false,
 													"required": true,
-													"binding": "LiabilityInfo.AmountDue"
+													"binding": "$300"
 												},
 												{
 													"type": "Date",
@@ -279,7 +264,7 @@
 													"readonly": false,
 													"required": true,
 													"format": "SHORT_FORMAT",
-													"binding": "LiabilityInfo.DueDate"
+													"binding": "16/08/2019"
 												},
 												{
 													"type": "TextInput",
@@ -295,7 +280,7 @@
 													"disabled": false,
 													"required": false,
 													"readonly": false,
-													"binding": "LiabilityInfo.AddressLine1"
+													"binding": "New Delhi, India."
 												}
 											],
 											"componentId": "ContainerRow_12"
@@ -327,7 +312,7 @@
 													"properties": {
 														"xs": 12,
 														"md": 12,
-														"lg": 4
+														"lg": 6
 													},
 													"componentId": "Plain Text_16"
 												},
@@ -340,7 +325,7 @@
 													},
 													"componentId": "Html Link_17",
 													"target": "_self",
-													"url": "https://dev.paymentus.io/rotp/abc"
+													"url": "https://www.google.co.in"
 												},
 												{
 													"type": "PlainText",
@@ -348,7 +333,7 @@
 													"properties": {
 														"xs": 12,
 														"md": 12,
-														"lg": 4
+														"lg": 6
 													},
 													"componentId": "Plain Text_18"
 												},
@@ -358,7 +343,7 @@
 													"properties": {
 														"xs": 12,
 														"md": 12,
-														"lg": 8
+														"lg": 12
 													},
 													"componentId": "Plain Text_19"
 												},
@@ -368,7 +353,7 @@
 													"properties": {
 														"xs": 12,
 														"md": 12,
-														"lg": 4
+														"lg": 6
 													},
 													"componentId": "Plain Text_20"
 												}
@@ -401,8 +386,8 @@
 													"properties": {
 														"xs": 12,
 														"md": 12,
-														"lg": 4
-													},
+														"lg": 6
+												   },
 													"componentId": "Plain Text_27"
 												}
 											],
@@ -456,7 +441,7 @@
 													"properties": {
 														"xs": 12,
 														"md": 12,
-														"lg": 4
+														"lg": 12
 													},
 													"componentId": "Plain Text_28"
 												}

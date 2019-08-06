@@ -27,8 +27,8 @@ public class ViewCol implements ComponentInterface {
 	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
-		log.info("in ViewCol for creating a table");
-		  writer.append("<tr class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
+		log.info("In ViewCol for creating a table");
+		  writer.append("<td class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
 		
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
 			
@@ -36,12 +36,12 @@ public class ViewCol implements ComponentInterface {
 				
 			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
 			   component.getGeneratedView(writer,dm);
-			   System.out.println("IN View Col ");
+			 //  System.out.println("IN View Col ");
 			}//for loop
 			
 		}//if child checker
 			
-		writer.append("</div>\r\n" );
+		writer.append("</td>\r\n" );
 			
 		return writer;
 	}

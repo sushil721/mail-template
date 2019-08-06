@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import com.paxcel.mail.common.ChildChecker;
 import com.paxcel.mail.components.interfc.ComponentInterface;
 import com.paxcel.mail.model.DomainModel;
-import com.paxcel.mail.service.NewHtmlGeneratorService;
 
 @Component("ViewRow")
 public class ViewRow  implements ComponentInterface {
@@ -30,8 +29,8 @@ private static Logger log = LoggerFactory.getLogger(ViewRow.class);
 	 */
 	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
-		log.info("in ViewRow for creating a table");
-		writer.append("<table class=\"md-"+domainModel.getProperties().get("md")+"\">\r\n" );
+		log.info("In ViewRow for creating a table");
+		writer.append("<tr class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
 		
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
 			
@@ -44,7 +43,7 @@ private static Logger log = LoggerFactory.getLogger(ViewRow.class);
 			
 		}//if child checker
 			
-		writer.append("</table>\r\n" );
+		writer.append("</tr>\r\n" );
 		return writer;
 	}
 }

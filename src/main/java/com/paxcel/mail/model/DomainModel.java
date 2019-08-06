@@ -48,6 +48,9 @@ public class DomainModel {
 	private String minLength;//": 0,
 	private String maxLength;//": 32,
 	
+	private String target;
+	private String url;
+	
 	
 	@JsonSerialize(include=JsonSerialize.Inclusion.NON_EMPTY)
 	private List<DomainModel> children = new ArrayList<>();
@@ -244,6 +247,22 @@ public class DomainModel {
 
 	public void setMaxLength(String maxLength) {
 		this.maxLength = maxLength;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	
