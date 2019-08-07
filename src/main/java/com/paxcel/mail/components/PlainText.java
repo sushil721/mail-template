@@ -20,20 +20,18 @@ public class PlainText  implements ComponentInterface{
 	@Autowired
 	private ApplicationContext context;
 	
-	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
 		 writer.append("<div class=\"lg-"+domainModel.getProperties().get("lg")+" underlined-caption\">\r\n" );
 		 writer.append("<span style=\"display:inline\">"+domainModel.getMessageKey()+"</span>");
 		
 		if(childChecker.checkChild(domainModel.getChildren().size())) {
-			  for(DomainModel dm:domainModel.getChildren()) {
-			  ComponentInterface component = (ComponentInterface)
-			  context.getBean(dm.getType()); 
+		   for(DomainModel dm:domainModel.getChildren()) {
+			  ComponentInterface component = (ComponentInterface)context.getBean(dm.getType()); 
 			  component.getGeneratedView(writer,dm);
-			  System.out.println("IN Container Row "); }//for loop
-			 
+		   }//for loop
 		}//if child checker
+		
 		 writer.append("</div>\r\n" );
 		return writer;
 	}

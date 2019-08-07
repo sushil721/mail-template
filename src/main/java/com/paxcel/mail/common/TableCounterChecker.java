@@ -8,9 +8,6 @@ public class TableCounterChecker {
 	private static boolean FIRST_FLAG=true;
 	
 	public boolean checkColumn(int i) {
-		//System.err.println("LG-Count :- "+LG_COUNT);
-     	//System.err.println("FIRST-FLAG :- "+FIRST_FLAG);
-
 		LG_COUNT+=i;
 		if(LG_COUNT>12) {
 			LG_COUNT=i;

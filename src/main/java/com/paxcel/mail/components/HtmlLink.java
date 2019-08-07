@@ -26,23 +26,19 @@ public class HtmlLink  implements ComponentInterface{
 
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
-		log.info("in HtmlLink for creating a table");
+		log.info("In HtmlLink for creating a table");
 		 writer.append("<div class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
 		 writer.append("<a href=\""+domainModel.getUrl()+"\" target=\""+domainModel.getTarget()+"\" >Pay Link</a>");
 		
 		if(childChecker.checkChild(domainModel.getChildren().size())) {
 			  for(DomainModel dm:domainModel.getChildren()) {
-			  ComponentInterface component = (ComponentInterface)
-			  context.getBean(dm.getType()); 
-			  component.getGeneratedView(writer,dm);
-			  System.out.println("IN Container Row "); }//for loop
-			 
+				  		  ComponentInterface component = (ComponentInterface)context.getBean(dm.getType()); 
+				  		  component.getGeneratedView(writer,dm);
+			  }//for loop
 		}//if child checker
+		
 		 writer.append("</div>\r\n" );
-			
 		return writer;
 	}
-
-
 
 }

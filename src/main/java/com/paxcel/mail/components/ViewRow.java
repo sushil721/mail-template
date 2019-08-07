@@ -27,23 +27,19 @@ private static Logger log = LoggerFactory.getLogger(ViewRow.class);
 	/*
 	 * @Autowired private ComponentInterface compInterface;
 	 */
-	@SuppressWarnings("unused")
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 		log.info("In ViewRow for creating a table");
 		writer.append("<tr class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
 		
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
-			
 			for(DomainModel dm:domainModel.getChildren()) {
-				
 			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
 			   component.getGeneratedView(writer,dm);
-			   
-			}//for loop
-			
+			 }//for loop
 		}//if child checker
 			
 		writer.append("</tr>\r\n" );
-		return writer;
+	  return writer;
 	}
+	
 }

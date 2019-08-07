@@ -54,8 +54,13 @@
 	border: 1px solid black;
 }
 
-.summaryContainer .container-title {
-	font-weight: bold
+.summaryContainer {
+	
+}
+
+.container-title {
+	font-weight: bold;
+	text-align: left
 }
 
 .amountDueContainer {
@@ -78,121 +83,79 @@
 
 .outer {
 	background: #ffffff;
-	border-radius: 5px;
+	border-radius: 15px;
 	width: 600px;
 }
 
 table {
-	border-spacing: 0px;
+	border-spacing: 2px;
 	padding: 5px
+}
+
+div {
+	margin-bottom: 10px;
 }
 </style>
 </head>
 <body style="background-color: #f6f6f6;">
 	<center>
-		<table width="600px" class="outer">
-			<tr class="lg-12">
-				<td class="lg-12">
-					<table class="lg-12">
-					  <tr>
+		<table class="outer" style="margin-bottom: 30px;">
+			<td class="lg-12">
+				<table class="lg-12">
+					<tr>
 						<td class="lg-6 null">
 							<table width="100%">
-								<caption class="container-title"></caption>
+								<caption class="container-title">Container 1</caption>
 								<tr class="lg-12">
 									<td>
-										<div class="lg-2">
-											<img
-												src="https://s3.amazonaws.com/paymentus-logos-dev/PAYMENTUS-DEV/N503/logo/logo.jpeg?timestamp=1560114033212"
-												alt="null" width="48" />
+										<div class="lg-4 underlined-caption">
+											<span style="display: inline">plain text</span>
+										</div>
+										<div class="lg-12">
+											<span style="display: inline">Amount Past Due :
+												LiabilityInfo.AmountPastDue</span>
 										</div>
 									</td>
 								</tr>
 							</table>
 						</td>
-						</tr>
-						<tr>
-							<td class="lg-6 amountDueContainer">
-								<table width="100%">
-									<caption class="container-title">null</caption>
-									<tr class="lg-12">
-										<td>
-											<div class="lg-12">
-												<span style="display: inline">Amount Due :
-													LiabilityInfo.AmountDue</span>
-											</div>
-											<div class="lg-12"></div>
-											<div class="lg-12"></div>
-										</td>
-									</tr>
-								</table>
-							</td>
-							<td class="lg-6 summaryContainer">
-								<table width="100%">
-									<caption class="container-title">Account Summary</caption>
-									<tr class="lg-12">
-										<td>
-											<div class="lg-12"></div>
-											<div class="lg-12">
-												<span style="display: inline">Previous Bill Amount :
-													LiabilityInfo.LastBillAmount</span>
-											</div>
-											<div class="lg-12">
-												<span style="display: inline">Payments :
-													LiabilityInfo.LastPaymentAmount</span>
-											</div>
-											<div class="lg-12">
-												<span style="display: inline">Amount Due :
-													LiabilityInfo.AmountDue</span>
-											</div>
-											<div class="lg-12"></div>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-						<td class="lg-6 optionsContainer">
+						<td class="lg-6 null">
 							<table width="100%">
-								<caption class="container-title">Payment Options</caption>
+								<caption class="container-title">Container 2</caption>
 								<tr class="lg-12">
 									<td>
-										<div class="lg-8"></div>
+										<div class="lg-4 underlined-caption">
+											<span style="display: inline">plain text</span>
+										</div>
+										<div class="lg-12">
+											<span style="display: inline">Account Number :
+												LiabilityInfo.AccountNumber</span>
+										</div>
 									</td>
 								</tr>
 							</table>
 						</td>
-						</tr>
-						<tr>
-							<td class="lg-6 null">
-								<table width="100%">
-									<caption class="container-title">Important Messages</caption>
-									<tr class="lg-12">
-										<td></td>
-									</tr>
-								</table>
-							</td>
-							<td class="lg-6 null">
-								<table width="100%">
-									<caption class="container-title"></caption>
-									<tr class="lg-12">
-										<td></td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
+					</tr>
+				</table>
+				
+				<table class="lg-12">
+					<tr>
 						<td class="lg-6 null">
 							<table width="100%">
-								<caption class="container-title">Customer Service</caption>
+								<caption class="container-title">Container 3</caption>
 								<tr class="lg-12">
-									<td></td>
+									<td>
+										<div class="lg-12">
+											<span style="display: inline">Amount Past Due :
+												LiabilityInfo.AmountPastDue</span>
+										</div>
+									</td>
 								</tr>
 							</table>
 						</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
+					</tr>
+				</table>
+			</td>
 		</table>
 	</center>
 </body>

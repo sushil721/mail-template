@@ -16,6 +16,7 @@ public class ThymeleafConfig {
 	@Autowired
 	private SpringTemplateEngine templateEngine;
 
+	@SuppressWarnings("static-access")
 	@Bean
 	public TemplateEngine emailTemplateEngine() {
 		templateEngine = new SpringTemplateEngine();

@@ -28,21 +28,18 @@ public class Image  implements ComponentInterface {
 	
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
-		  log.info("in Container Row for creating a table");
+		  log.info("In Container Row for creating a table");
 		  writer.append("<div class=\"lg-"+domainModel.getProperties().get("lg")+"\">");
-		 // sb.append(domainModel.getAltText()==null ? "" : domainModel.getAltText());
 		  writer.append("<img src=\""+domainModel.getSrc()+"\" alt=\""+domainModel.getAltText()+"\" width=\""+domainModel.getWidth()+"\" />\r\n" );
 		  
 		  if(childChecker.checkChild(domainModel.getChildren().size())) {
 			  for(DomainModel dm:domainModel.getChildren()) {
-			  ComponentInterface component = (ComponentInterface)
-			  context.getBean(dm.getType()); 
-			  component.getGeneratedView(writer,dm);
-			  System.out.println("IN Container Row "); }//for loop
-			 
+				  ComponentInterface component = (ComponentInterface)context.getBean(dm.getType()); 
+				  component.getGeneratedView(writer,dm);
+			  }//for loop
 		}//if child checker
+		  
 		  writer.append("</div>");
-		
 		return writer;
 	}
 

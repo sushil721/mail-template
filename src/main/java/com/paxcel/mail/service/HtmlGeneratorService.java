@@ -246,7 +246,7 @@ public class HtmlGeneratorService implements HtmlGenerateServiceInterface {
 		writer.append("</body>\r\n");
 		writer.append("</html>");
 		 
-		System.err.println(writer.toString());
+//		System.err.println(writer.toString());
 		 
 	   return writer;
 	}

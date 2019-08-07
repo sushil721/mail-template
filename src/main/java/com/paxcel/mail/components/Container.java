@@ -26,68 +26,45 @@ public class Container implements ComponentInterface{
 	@Autowired
 	private ApplicationContext context;
 		
-	/*
-	 * @Autowired private TableCounterChecker counterChecker;
-	 */
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 		TableCounterChecker counterChecker = new TableCounterChecker();
 		log.info("in Container for creating a table");
-	
-//		System.err.println(domainModel.getType());
-//		System.err.println(domainModel.getProperties().get("lg"));
 		if(counterChecker.checkColumn(domainModel.getProperties().get("lg"))) {
 			writer.append("<td class=\"lg-"+domainModel.getProperties().get("lg")+" " +domainModel.getCssClasses()+"\">\r\n");
-			//System.out.println("In Table Data creation <td>");
 	//logic start
-			
 			if(childChecker.checkChild(domainModel.getChildren().size())) {
 				  for(DomainModel dm:domainModel.getChildren()) {
 					  String title = domainModel.getTitle()==null ? " " : domainModel.getTitle();
 					  writer.append("<table width=\"100%\">\r\n" + 
 						 		"			<caption class=\"container-title\">"+title+"</caption>\r\n");
-					 
 					 ComponentInterface component= (ComponentInterface) context.getBean(dm.getType());
 				     component.getGeneratedView(writer,dm); 
 				     writer.append("</table>\r\n");
-				    // System.out.println("IN Container ");
-				  }//for loop 
+				   }//for loop 
 		   }//if child checker
 			
 	//logic end		
 			writer.append("</td>\r\n");
-			//System.out.println("In Table Data close </td>");
 			writer.append("</tr>\r\n");
-			//System.out.println("In Table Row close </tr>");
-			
 		}else {
 			writer.append("<tr>\r\n");
-			//System.out.println("In Table Row creation <tr>");
 			writer.append("<td class=\"lg-"+domainModel.getProperties().get("lg")+" " +domainModel.getCssClasses()+"\">\r\n");
-			//System.out.println("In Table Data creation <td>");
-	//logic start
-			
+	//logic start	
 			if(childChecker.checkChild(domainModel.getChildren().size())) {
 				  for(DomainModel dm:domainModel.getChildren()) {
 					 writer.append("<table width=\"100%\">\r\n" + 
 					 		"			<caption class=\"container-title\">"+domainModel.getTitle()+"</caption>\r\n");
 					 ComponentInterface component= (ComponentInterface) context.getBean(dm.getType());
 				     component.getGeneratedView(writer,dm); 
-				     
 				     writer.append("</table>\r\n");
-				     //System.out.println("IN Container ");
 				  }//for loop 
 		   }//if child checker
-			
-			
 	//logic end		
 			writer.append("</td>\r\n");
-			//System.out.println("In Table Data close </td>");
 			if(!childChecker.checkChild(domainModel.getChildren().size())) {
 				writer.append("</tr>\r\n");
-				//System.out.println("In Table Row close </tr>");
-			}//inner childChecker if
+				}//inner childChecker if
 		}//else
-		
 		return writer;
 	}
 	

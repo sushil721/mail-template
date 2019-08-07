@@ -3,7 +3,9 @@ package com.paxcel.mail.controller;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.mail.MessagingException;
@@ -15,9 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +47,9 @@ public class RestJsonController {
      public MailResponceDTO emailTemplate( Model model) {
     	   log.info("Before Object Get ");
       Map<String, String> messageMap = new HashMap<String, String>();
-      Writer writer = new StringWriter();
+     
+      Writer writer = null;
+      
 	   Resource resource = new ClassPathResource("/static/newjson.json");
 	  // ModelMain modelMain = null;
 		try {
@@ -53,14 +60,25 @@ public class RestJsonController {
 
 			Mail mail = new Mail();
 			mail.setFrom("sushilgiacr@gmail.com");
-			// mail.setTo("sushilneron@gmail.com");
-			mail.setTo("sushil.singh@paxcel.net");
-			//mail.setTo("preeti.gupta@paxcel.net");
+			
+//			mail.setTo("sushilneron@gmail.com");
+//			mail.setTo("sushil.singh@paxcel.net");
+//			mail.setTo("preeti.gupta@paxcel.net");
+			
 			mail.setSubject("Ebill generated from ebill renderer.");
-				try {
-					
+			
+			List<String> email = new ArrayList<>();
+			email.add("sushil.singh@paxcel.net");
+			email.add("sushilneron@gmail.com");
+			email.add("sushilgiacr@outlook.com");
+//			email.add("preeti.gupta@paxcel.net");
+			  try {
+				  for(String e:email) {
+				    writer = new StringWriter();
+					mail.setTo(e);  
 					emailServiceHtmlGeneration.sendGeneratedMail(mail, htmlGenerateServiceInterface.createHtmlTags(writer,domainModel).toString());
-					
+					writer.flush();
+				  }//for loop
 				} catch (MailSendException e) {
 					log.error(e.getMessage());
 					messageMap.put("Message", e.getMessage());
@@ -102,7 +120,88 @@ public class RestJsonController {
 		}//finally
 	    log.info("After Object Get ");
 	    messageMap.put("Message","Mail sent successfully");
-	    return new MailResponceDTO(messageMap, HttpStatus.OK , null);
+	    return new MailResponceDTO(messageMap, HttpStatus.OK , "Mail sent successfully");
+    }
+     
+    // @PostMapping("/newJsonRequest")
+     @PostMapping(value="/newJsonRequest", headers="Accept=application/json",produces = MediaType.APPLICATION_JSON_VALUE)
+     public MailResponceDTO emailTemplatePost(@RequestBody DomainModel domainModel) {
+    	   log.info("Before Object Get ");
+      Map<String, String> messageMap = new HashMap<String, String>();
+     
+      Writer writer = null;
+      
+//	   Resource resource = new ClassPathResource("/static/newjson.json");
+	  // ModelMain modelMain = null;
+		try {
+			
+//			ObjectMapper mapper = new ObjectMapper();
+//			DomainModel domainModel = mapper.readValue(resource.getInputStream(), DomainModel.class);
+			//htmlGenerateServiceInterface.createHtmlTags(writer,modelMain).toString();
+
+			Mail mail = new Mail();
+			mail.setFrom("sushilgiacr@gmail.com");
+			
+//			mail.setTo("sushilneron@gmail.com");
+//			mail.setTo("sushil.singh@paxcel.net");
+//			mail.setTo("preeti.gupta@paxcel.net");
+			
+			mail.setSubject("Ebill generated from ebill renderer.");
+			
+			List<String> email = new ArrayList<>();
+			email.add("sushil.singh@paxcel.net");
+			email.add("sushilneron@gmail.com");
+			email.add("sushilgiacr@outlook.com");
+			email.add("preeti.gupta@paxcel.net");
+			  try {
+				  for(String e:email) {
+				    writer = new StringWriter();
+					mail.setTo(e);  
+					emailServiceHtmlGeneration.sendGeneratedMail(mail, htmlGenerateServiceInterface.createHtmlTags(writer,domainModel).toString());
+					writer.flush();
+				  }//for loop
+				} catch (MailSendException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage());
+					return new MailResponceDTO(messageMap, HttpStatus.INTERNAL_SERVER_ERROR , "May be internate connection not available");
+				} catch (MessagingException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage());
+					return new MailResponceDTO(messageMap, HttpStatus.BAD_GATEWAY , null);
+				}catch (NoSuchBeanDefinitionException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage() +" ");
+					return new MailResponceDTO(messageMap, HttpStatus.NOT_FOUND , " , please provide a required/valid 'type' ");
+				} catch (ClassNotFoundException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage() +" type not accepted");
+					return new MailResponceDTO(messageMap, HttpStatus.NOT_ACCEPTABLE , "Type Not Accept");
+				} catch (InstantiationException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage() +" type not accepted");
+					return new MailResponceDTO(messageMap, HttpStatus.NOT_FOUND, " class not instantiate");
+				} catch (IllegalAccessException e) {
+					log.error(e.getMessage());
+					messageMap.put("Message", e.getMessage() +" type not accepted");
+					return new MailResponceDTO(messageMap, HttpStatus.BAD_REQUEST , " Illegal Request");
+				}
+		} catch (IOException e) {
+			log.error(e.getMessage());
+			messageMap.put("Message", e.getMessage());
+			return new MailResponceDTO(messageMap, HttpStatus.NOT_FOUND , null);
+		}
+		finally {
+			try {
+				writer.flush();
+				writer.close();
+			} catch (IOException e) {
+				messageMap.put("Message", e.getMessage());
+				return new MailResponceDTO(messageMap, HttpStatus.NOT_FOUND , null);
+			}
+		}//finally
+	    log.info("After Object Get ");
+	    messageMap.put("Message","Mail sent successfully");
+	    return new MailResponceDTO(messageMap, HttpStatus.OK , "Mail sent successfully");
     }
 
 }

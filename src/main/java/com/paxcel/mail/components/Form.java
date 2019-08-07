@@ -31,19 +31,15 @@ public class Form  implements ComponentInterface {
 	public Writer getGeneratedView(Writer writer, DomainModel domainModel) throws IOException {
 
 		log.info("in Form for creating a table");
-		  writer.append("<table class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
-		
+		writer.append("<table class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
+	
 		 if(childChecker.checkChild(domainModel.getChildren().size())) {
-			
 			for(DomainModel dm:domainModel.getChildren()) {
-				
-			   ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
-				//ComponentInterface component = new Container();
-			   component.getGeneratedView(writer,dm);
-			  // System.out.println("IN Form ");
-			}//for loop
+				ComponentInterface component = (ComponentInterface) context.getBean(dm.getType());
+			    component.getGeneratedView(writer,dm);
+			 }//for loop
 			
-		}//if child checker
+		  }//if child checker
 		 counterChecker.reSet();
 		writer.append("</table>\r\n" );
 			

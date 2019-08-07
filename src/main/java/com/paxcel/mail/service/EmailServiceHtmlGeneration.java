@@ -35,7 +35,7 @@ public class EmailServiceHtmlGeneration {
 	        helper.setSubject(mail.getSubject());
 	        helper.setFrom(mail.getFrom());
 
-//	        emailSender.send(message);
+	        emailSender.send(message);
 	    }
 
 		

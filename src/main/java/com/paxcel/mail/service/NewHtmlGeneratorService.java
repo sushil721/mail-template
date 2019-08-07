@@ -31,6 +31,7 @@ public class NewHtmlGeneratorService implements HtmlGenerateServiceInterface {
 	@Override
 	public Writer createHtmlTags(Writer writer, DomainModel domainModel) throws IOException, ClassNotFoundException,
 			InstantiationException, IllegalAccessException, NoSuchBeanDefinitionException {
+		log.info("IN NewHtmlGenerator class");
 		writer.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n" + 
 				"<html>\r\n" + 
 				"<head>\r\n" + 
@@ -87,10 +88,13 @@ public class NewHtmlGeneratorService implements HtmlGenerateServiceInterface {
 				"	border: 1px solid black;\r\n" + 
 				"}\r\n" + 
 				"\r\n" + 
-				".summaryContainer .container-title {\r\n" + 
-				"	font-weight: bold\r\n" + 
+				".summaryContainer {\r\n" + 
+						/* "	font-weight: bold\r\n" + */
+				"}\r\n" +
+				".container-title{\r\n" + 
+				"    font-weight: bold;\r\n" + 
+				"    text-align: left\r\n" + 
 				"}\r\n" + 
-				"\r\n" + 
 				".amountDueContainer {\r\n" + 
 				"	border: 1px solid black;\r\n" + 
 				"	background-color: #9dcfe6\r\n" + 
@@ -111,24 +115,23 @@ public class NewHtmlGeneratorService implements HtmlGenerateServiceInterface {
 				"\r\n" + 
 				".outer {\r\n" + 
 				"	background: #ffffff;\r\n" + 
-				"	border-radius: 5px;\r\n" + 
+				"	border-radius: 15px;\r\n" + 
 				"	width: 600px;\r\n" + 
 				"}\r\n" + 
 				"\r\n" + 
 				"table {\r\n" + 
-				"	border-spacing: 0px;\r\n" + 
+				"	border-spacing: 2px;\r\n" + 
 				"	padding: 5px\r\n" + 
 				"}\r\n" +
 			    "div {\r\n" + 
-				"	margin-bottom: 15px;\r\n" + 
-				"}\r\n" + 
-				"\r\n" + 
+				"	margin-bottom: 10px;\r\n" + 
+				"}\r\n" +
 				"</style>\r\n" + 
 				"</head>\r\n");
 		
 		writer.append("<body style=\"background-color:#f6f6f6;\">\r\n" + 
 					  "<center>\r\n" + 
-					  "<table width=\"600px\" class=\"outer\">\r\n");
+					  "<table class=\"outer\" style=\"margin-bottom: 30px;\">\r\n");
 		
 		if(childChecker.checkChild(domainModel.getChildren().size())) {
 			

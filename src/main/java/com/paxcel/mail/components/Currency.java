@@ -30,12 +30,11 @@ public class Currency  implements ComponentInterface{
 	    writer.append("<div class=\"lg-"+domainModel.getProperties().get("lg")+"\">\r\n" );
 		writer.append("<span style=\"display:inline\">"+domainModel.getLabel()+" : "+domainModel.getBinding()+"</span>");
 		  if(childChecker.checkChild(domainModel.getChildren().size())) {
-			  for(DomainModel dm:domainModel.getChildren()) {
+			for(DomainModel dm:domainModel.getChildren()) {
 			  ComponentInterface component = (ComponentInterface)
 			  context.getBean(dm.getType()); 
 			  component.getGeneratedView(writer,dm);
-			  System.out.println("IN Container Row "); }//for loop
-			 
+			}//for loop
 		}//if child checker
 		  writer.append("</div>\r\n" );
 			
