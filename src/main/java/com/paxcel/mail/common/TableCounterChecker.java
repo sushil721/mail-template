@@ -20,6 +20,7 @@ public class TableCounterChecker {
 		return true;
 	}
 
+	
 	public void reSet() {
 		LG_COUNT = 0;
 		FIRST_FLAG=true;
